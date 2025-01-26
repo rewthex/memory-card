@@ -1,0 +1,23 @@
+.card {
+  background: white;
+  max-width: 250px;
+  box-shadow: var(--shadow-elevation-medium);
+  border: 1px solid white;
+}
+
+.card:hover {
+  border: 1px solid rgba(109, 109, 109, 0.5);
+}
+
+.card:active {
+  border: 1px solid rgba(109, 109, 109, 0.747);
+
+  box-shadow: none;
+}
+
+.pokemon-name {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  text-align: center;
+}

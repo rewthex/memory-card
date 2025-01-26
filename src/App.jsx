@@ -1,37 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import './App.css';
+import PokemonGame from './Components/PokemonGame';
 
 const POKEMON_API_URL = 'https://pokeapi.co/api/v2/pokemon/';
-const STARTING_POKEMON = Math.floor(Math.random() * 141) + 1;
-const pokemon_array = Array.from(
-	{ length: 10 },
-	(_, i) => STARTING_POKEMON + i
-);
 
 function App() {
-	const pokemon = useData(pokemon_array)
-  
-  const filteredPokemon = pokemon ? pokemon.map((pokemon) => ({
-		name: pokemon.name,
-		sprite: pokemon.sprites.other.dream_world.front_default,
-	}))
-  : [];
+  const pokemonIds = useMemo(() => {
+    const ids = new Set();
+    while (ids.size !== 12) {
+        ids.add(Math.floor(Math.random() * 151) + 1);
+    }
+    return Array.from(ids);
+  }, []);
+
+	const pokemonData = useData(Array.from(pokemonIds));
+
+	const pokemonObjects = useMemo(
+    () =>
+        pokemonData
+            ? pokemonData.map((pokemon) => ({
+                  name: pokemon.name,
+                  sprite: pokemon.sprites.other['official-artwork'].front_default,
+              }))
+            : [],
+    [pokemonData]
+);
 
 	return (
-    <div>
-      <h1>Pokémon</h1>
-      {filteredPokemon.length > 0 ? (
-        filteredPokemon.map((p, index) => (
-          <div key={index}>
-            <h2>{p.name}</h2>
-            <img src={p.sprite} alt={p.name} />
-          </div>
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+		<>
+			{pokemonObjects.length > 0 ? (
+				<PokemonGame pokemonObjects={pokemonObjects} />
+			) : (
+				<p>Loading...</p>
+			)}
+		</>
+	);
 }
 
 function useData(ids) {
