@@ -13,7 +13,7 @@ function App() {
     return Array.from(ids);
   }, []);
 
-	const pokemonData = useData(Array.from(pokemonIds));
+	const pokemonData = useData(pokemonIds);
 
 	const pokemonObjects = useMemo(
     () =>

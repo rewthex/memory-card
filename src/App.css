@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
 
 :root {
   --shadow-color: 0deg 0% 0%;
@@ -20,7 +20,6 @@
 
 body {
   background: #ffeaea;
-  font-family: "Jersey 10", serif;
-  font-weight: 400;
+  font-family: "DynaPuff", serif;
   font-style: normal;
 }
