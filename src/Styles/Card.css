@@ -1,23 +1,39 @@
 .card {
-  background: white;
+  background: rgb(255, 241, 45);
   max-width: 250px;
-  box-shadow: var(--shadow-elevation-medium);
-  border: 1px solid white;
+  box-shadow: var(--shadow-elevation-high);
+  border: 4px solid #1d2b5d;
+  border-radius: 10px;
+  transition: transform 0.1s ease-in-out;
 }
 
 .card:hover {
-  border: 1px solid rgba(109, 109, 109, 0.5);
+  transform: scale(1.05);
 }
 
 .card:active {
-  border: 1px solid rgba(109, 109, 109, 0.747);
-
   box-shadow: none;
 }
 
 .pokemon-name {
   font-size: 2rem;
+  font-weight: 300;
+  color: #223b6c;
   letter-spacing: 0.1em;
   text-transform: capitalize;
   text-align: center;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
 }

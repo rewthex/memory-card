@@ -1,11 +1,14 @@
 import { useState, useMemo, useEffect } from 'react';
 import './App.css';
 import PokemonGame from './Components/PokemonGame';
+import LoadingScreen from './Components/LoadingScreen';
 
 const POKEMON_API_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 function App() {
-  const pokemonIds = useMemo(() => {
+  const [showGame, setShowGame] = useState(false);
+	
+	const pokemonIds = useMemo(() => {
     const ids = new Set();
     while (ids.size !== 12) {
         ids.add(Math.floor(Math.random() * 151) + 1);
@@ -24,14 +27,23 @@ function App() {
               }))
             : [],
     [pokemonData]
-);
+	);
+
+	useEffect(() => {
+		if (pokemonObjects.length > 0) {
+			const timer = setTimeout(() => {
+				setShowGame(true);
+			}, 1500)
+			return () => clearTimeout(timer);
+		}
+	}, [pokemonObjects])
 
 	return (
 		<>
-			{pokemonObjects.length > 0 ? (
+			{showGame ? (
 				<PokemonGame pokemonObjects={pokemonObjects} />
 			) : (
-				<p>Loading...</p>
+				<LoadingScreen />
 			)}
 		</>
 	);

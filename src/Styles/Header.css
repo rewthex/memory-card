@@ -4,6 +4,9 @@
   padding: 1.5em;
   margin-bottom: 0.5em;
   justify-content: space-between;
+  color: #fbcb04;
+  text-shadow: 2px 0 #3166ae, -2px 0 #3166ae, 0 2px #3166ae, 0 -2px #3166ae,
+             1px 1px #3166ae, -1px -1px #3166ae, 1px -1px #3166ae, -1px 1px #3166ae;
 }
 
 .header-right {
