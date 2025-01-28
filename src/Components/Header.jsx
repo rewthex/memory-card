@@ -1,11 +1,11 @@
-import '../Styles/Header.css'
+import '../Styles/Header.css';
 
 export default function Header({ currentScore, highScore }) {
 	return (
 		<div className='header'>
 			<div className='header-left'>
 				<h1>Pokemon Memory Game</h1>
-				<span>Get points by clicking on unique pokemon!</span>
+				<span>Don't click the same Pokemon twice!</span>
 			</div>
 			<div className='header-right'>
 				<p>Current score: {currentScore}</p>
