@@ -16,8 +16,9 @@
 }
 
 .pokemon-name {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
+  padding: 0.2em;
   color: #223b6c;
   letter-spacing: 0.1em;
   text-transform: capitalize;
